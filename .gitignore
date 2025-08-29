@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+instance/*.sqlite
+instance/*.db
+app/static/img/uploads/
+.DS_Store
+*.log
+node_modules/
+dist/
+build/
