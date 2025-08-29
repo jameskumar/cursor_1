@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Welcome · PatelJiSaadi{% endblock %}
+{% block content %}
+<section>
+    <h1>Find your perfect match</h1>
+    <p>A simple, privacy-first matrimonial platform.</p>
+    <a href="{{ url_for('auth.register') }}" role="button">Get Started</a>
+</section>
+
+<section>
+    <h2>Quick Search</h2>
+    <form action="{{ url_for('views.search') }}" method="get">
+        <div class="grid">
+            <select name="gender">
+                <option value="">Any Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="text" name="caste" placeholder="Caste" />
+            <input type="text" name="location" placeholder="Location" />
+        </div>
+        <button type="submit">Search</button>
+    </form>
+    <p class="muted">Filters are optional.</p>
+    </section>
+{% endblock %}
+
