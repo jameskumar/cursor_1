@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Search · PatelJiSaadi{% endblock %}
+{% block content %}
+<h2>Search Profiles</h2>
+<form method="get">
+    <div class="grid">
+        <select name="gender">
+            <option value="" {% if not request.args.get('gender') %}selected{% endif %}>Any Gender</option>
+            <option value="male" {% if request.args.get('gender')=='male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if request.args.get('gender')=='female' %}selected{% endif %}>Female</option>
+        </select>
+        <input type="text" name="caste" placeholder="Caste" value="{{ request.args.get('caste','') }}" />
+        <input type="text" name="location" placeholder="Location" value="{{ request.args.get('location','') }}" />
+    </div>
+    <button type="submit">Search</button>
+    <a href="{{ url_for('views.search') }}">Reset</a>
+    <p class="muted">Showing up to 50 results.</p>
+    </form>
+
+<div class="grid">
+    {% for r in results %}
+    <article>
+        <header><a href="{{ url_for('profile.view_profile', user_id=r['user_id']) }}">{{ r['full_name'] }}</a></header>
+        <p>{{ r['gender'] or '—' }} · {{ r['age'] or '—' }} · {{ r['location'] or '—' }}</p>
+        <p>{{ (r['bio'] or '')[:120] }}{% if r['bio'] and r['bio']|length > 120 %}…{% endif %}</p>
+    </article>
+    {% else %}
+    <p>No results found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+

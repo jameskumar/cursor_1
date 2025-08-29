@@ -1,0 +1,9 @@
+.flash { margin: 1rem 0; }
+.alert { padding: .6rem 1rem; border-radius: 6px; }
+.alert.success { background: #e3f9e5; }
+.alert.danger { background: #fde2e1; }
+.alert.warning { background: #fff3cd; }
+.alert.info { background: #e1f0ff; }
+
+footer { margin: 2rem 0; text-align: center; color: #777; }
+
