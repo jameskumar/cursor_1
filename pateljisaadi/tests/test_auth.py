@@ -1,4 +1,4 @@
-from .conftest import register, login
+from conftest import register, login
 
 
 def test_register_login_logout_flow(client):

@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-change-this-in-prod}
+      - PASSWORD_SALT=${PASSWORD_SALT:-demo-salt}
+    volumes:
+      - ./instance:/app/instance
+      - ./app/static/img/uploads:/app/app/static/img/uploads
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["gunicorn", "-b", "0.0.0.0:8000", "wsgi:app"]
+  tests:
+    build: .
+    environment:
+      - SECRET_KEY=test
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["pytest", "-q"]

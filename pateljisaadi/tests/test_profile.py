@@ -1,4 +1,4 @@
-from .conftest import register, login
+from conftest import register, login
 from app.db import get_db
 
 
